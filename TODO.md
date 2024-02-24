@@ -1,0 +1,1 @@
+test for index view
