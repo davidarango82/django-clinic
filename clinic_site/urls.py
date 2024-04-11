@@ -21,3 +21,9 @@ urlpatterns = [
     path('patients/', include('patients.urls')),
     path('admin/', admin.site.urls),
 ]
+
+# Add URL maps to redirect the base URL to our application
+from django.views.generic import RedirectView
+urlpatterns += [
+    path('', RedirectView.as_view(url='patients/', permanent=True)),
+]
