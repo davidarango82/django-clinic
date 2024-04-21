@@ -16,4 +16,5 @@ class IndexView (ListView):
 class PatientCreate(CreateView):
     model = Patient
     fields = '__all__'
-    success_url = reverse_lazy('patients:all')
+    success_url = reverse_lazy('patients:index')
+
