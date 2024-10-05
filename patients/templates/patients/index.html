@@ -1,3 +1,23 @@
+
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+
+<h1>Django Clinic Home</h1>
+  <p>
+    Welcome to Django-Clinic, a website developed by
+    <em>David</em>!
+  </p>
+  <h2>Dynamic content</h2>
+  <p>The clinic has the following record counts:</p>
+  <ul>
+    <li><strong>Total Patients:</strong> </li>
+    <li><strong>Total Appointments:</strong> </li>
+    <li><strong>Total Visits:</strong> </li>
+    <li><strong>Total Users:</strong> </li>
+  </ul>
+
 {% if latest_patient_list %}
     <ul>
     {% for patient in latest_patient_list %}
@@ -7,3 +27,5 @@
 {% else %}
     <p>No patients are available.</p>
 {% endif %}
+{% endblock %}
+

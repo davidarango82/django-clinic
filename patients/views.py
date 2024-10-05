@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Patient
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
@@ -13,8 +13,10 @@ class IndexView (ListView):
         """Return xxx""" 
         return Patient.objects.order_by ("lastname")[:5]
 
-class PatientCreate(CreateView):
+class PatientDetailView(DetailView):
+    model = Patient
+
+class PatientCreateView(CreateView):
     model = Patient
     fields = '__all__'
     success_url = reverse_lazy('patients:index')
-
