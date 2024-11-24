@@ -5,13 +5,24 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-class IndexView (ListView): 
-    template_name = "patients/index.html"
-    context_object_name = "latest_patient_list" 
-        
-    def get_queryset(self): 
-        """Return xxx""" 
-        return Patient.objects.order_by ("lastname")[:5]
+def index(request):
+    """View function for home page of site."""
+    # Generate count of some of patients
+    num_patients = Patient.objects.all().count()
+
+    # Render the HTML template index.html with the data in the context variable.
+    return render(
+        request,
+        'index.html',
+        context={'num_patients': num_patients, },
+    )
+
+#def index (request): 
+#    template_name = "patients/index.html"
+
+#    def get_queryset(self): 
+#        """Return xxx""" 
+#        return Patient.objects.order_by ("lastname")[:5]
 
 class PatientDetailView(DetailView):
     model = Patient
