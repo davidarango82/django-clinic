@@ -24,6 +24,9 @@ def index(request):
 #        """Return xxx""" 
 #        return Patient.objects.order_by ("lastname")[:5]
 
+class PatientListView(ListView):
+    model = Patient
+
 class PatientDetailView(DetailView):
     model = Patient
 
